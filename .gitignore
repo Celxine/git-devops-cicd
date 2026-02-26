@@ -5,3 +5,7 @@
 !README.md
 !test.java
 !.gitignore
+!sorting-tests/
+
+# Ignore Maven build output
+sorting-tests/target/
