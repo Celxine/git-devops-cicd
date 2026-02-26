@@ -1,0 +1,7 @@
+# Ignore everything
+/*
+
+# But keep these project files
+!README.md
+!test.java
+!.gitignore
