@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 //gonna connect to database setup module yay!
 public class test {
@@ -12,3 +13,6 @@ public class test {
         System.out.println("Setup complete.");
     }
 }
+=======
+// This line was added directly on main by a teammate
+>>>>>>> main
