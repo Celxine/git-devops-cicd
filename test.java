@@ -1,5 +1,5 @@
 
-
+//gonna connect to database setup module yay!
 public class test {
 
     public static void validateSetup() {
