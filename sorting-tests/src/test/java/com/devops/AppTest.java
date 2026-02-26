@@ -28,6 +28,9 @@ public class AppTest {
     ChromeOptions options = new ChromeOptions();
     options.addArguments("--no-sandbox");
     options.addArguments("--disable-dev-shm-usage");
+    if(System.getenv("CI") != null){
+        options.addArguments("--headless");
+    }
     driver = new ChromeDriver(options);
     driver.manage().window().maximize();
     driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
@@ -37,23 +40,20 @@ public class AppTest {
     
 @Test
 public void testSortByNameAscending() {
-    driver.get("https://practicesoftwaretesting.com/#/");
-
-    // Wait for products to load initially
-    WebElement firstProduct = wait.until(
+    driver.get("https://practicesoftwaretesting.com/#/"); WebElement firstProduct = wait.until(
         ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-test='product-name']"))
     );
 
-    // Select A-Z sort
+  
     Select select = new Select(wait.until(
         ExpectedConditions.elementToBeClickable(By.cssSelector("[data-test='sort']"))
     ));
     select.selectByValue("name,asc");
 
-    // Wait for the old product to go stale (page reloaded with new results)
+   
     wait.until(ExpectedConditions.stalenessOf(firstProduct));
 
-    // Now grab the freshly sorted product names
+  
     List<WebElement> productElements = wait.until(
         ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("[data-test='product-name']"))
     );
@@ -75,21 +75,15 @@ public void testSortByNameAscending() {
 public void testSortByNameDescending() {
     driver.get("https://practicesoftwaretesting.com/#/");
 
-    // Wait for products to load initially
+   
     WebElement firstProduct = wait.until(
         ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-test='product-name']"))
     );
-
-    // Select Z-A sort
     Select select = new Select(wait.until(
         ExpectedConditions.elementToBeClickable(By.cssSelector("[data-test='sort']"))
     ));
     select.selectByValue("name,desc");
-
-    // Wait for the old product to go stale (page reloaded with new results)
     wait.until(ExpectedConditions.stalenessOf(firstProduct));
-
-    // Now grab the freshly sorted product names
     List<WebElement> productElements = wait.until(
         ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("[data-test='product-name']"))
     );

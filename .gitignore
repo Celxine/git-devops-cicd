@@ -6,6 +6,7 @@
 !test.java
 !.gitignore
 !sorting-tests/
+!.github/
 
 # Ignore Maven build output
 sorting-tests/target/
