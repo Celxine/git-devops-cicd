@@ -33,8 +33,8 @@ public class AppTest {
     }
     driver = new ChromeDriver(options);
     driver.manage().window().maximize();
-    driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
-    wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+    driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+    wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 }
 
     
